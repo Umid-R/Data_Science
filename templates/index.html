@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experience Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 20px;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Years of Experience Predictor</h1>
+        
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label>Employment Status</label>
+                <select name="status" required>
+                    <option value="1">Employed</option>
+                    <option value="0">Unemployed</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Age Group</label>
+                <select name="age_group" required>
+                    <option value="1">18-24</option>
+                    <option value="2">25-34</option>
+                    <option value="3">35-44</option>
+                    <option value="4">45-54</option>
+                    <option value="5">55+</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Education</label>
+                <select name="education" required>
+                    <option value="1">High School</option>
+                    <option value="2">Diploma</option>
+                    <option value="3">Bachelor's</option>
+                    <option value="4">Master's</option>
+                    <option value="5">PhD</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>AI Risk Level</label>
+                <select name="ai_risk" required>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">High</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Monthly Salary (INR)</label>
+                <input type="number" name="salary" min="0" max="200000" value="50000" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Industry</label>
+                <select name="industry" required>
+                    <option value="Education">Education</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Technology">Technology</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Location</label>
+                <select name="location" required>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Rural">Rural</option>
+                    <option value="Suburban">Suburban</option>
+                    <option value="Urban">Urban</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Year</label>
+                <input type="number" name="year" min="2020" max="2030" value="2024" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Month</label>
+                <input type="number" name="month" min="1" max="12" value="6" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Day</label>
+                <input type="number" name="day" min="1" max="31" value="15" required>
+            </div>
+            
+            <button type="submit">🔮 Predict Experience</button>
+        </form>
+        
+        {% if prediction %}
+        <div class="result">
+            <strong>Predicted Years of Experience:</strong><br>
+            {{ prediction }} years
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
